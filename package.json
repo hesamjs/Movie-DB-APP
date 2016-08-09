@@ -1,0 +1,24 @@
+{
+  "name": "movie_db_app",
+  "version": "1.0.0",
+  "description": "movie database app ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickianspencer/Movie-DB-APP.git"
+  },
+  "author": "nick allesandro hesam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickianspencer/Movie-DB-APP/issues"
+  },
+  "homepage": "https://github.com/nickianspencer/Movie-DB-APP#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2"
+  }
+}

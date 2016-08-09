@@ -1,53 +1,45 @@
 body {
-	background-color: #3a3a3a;
-	background-image: url(../images/dark_circles.png);
-	color:#d7d5c7;
-	font-family: 'Oswald', sans-serif;
-	max-width:1440px;
-}
+  background-color: #3a3a3a;
+  background-image: url(../images/dark_circles.png);
+  color: #d7d5c7;
+  font-family: 'Oswald', sans-serif;
+  max-width: 1440px; }
 
 .wrapper {
-	max-width: 1170px;
-	margin: 0 auto;
-}
+  max-width: 1170px;
+  margin: 0 auto; }
 
 main {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-	background-image: url(../images/noun_524563_cc.svg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 50%;
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-image: url(../images/noun_524563_cc.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%; }
 
 h1 {
-	color: #f6c417;
-	letter-spacing: 8px;
-	text-align: center;
-	font-size: 60px;
-}
+  color: #f6c417;
+  letter-spacing: 8px;
+  text-align: center;
+  font-size: 60px; }
 
 .blue {
-	color:#578998;
-}
+  color: #578998; }
 
 h3 {
-	color:#d7d5c7;
-	font-weight: lighter;
-	font-size: 30px;
-	position: relative;
-	top:-200px;
-}
+  color: #d7d5c7;
+  font-weight: lighter;
+  font-size: 30px;
+  position: relative;
+  top: -200px; }
 
 img {
-	position: relative;
-	top:-50px;
-}
+  position: relative;
+  top: -50px; }
 
 form {
-	position: relative;
-	top:-300px;
-	text-align: center;
-}
+  position: relative;
+  top: -300px;
+  text-align: center; }
