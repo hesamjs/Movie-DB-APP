@@ -1,6 +1,7 @@
 var MovieDBApp = {};
 
 MovieDBApp.ArrayOfMovieByCast = [];
+MovieDBApp.ArrayOfMovieIds = [];
 
 MovieDBApp.apiUrl = 'https://api.themoviedb.org/3/'
 MovieDBApp.apiKey = '0dc77fa2f3cda50f25ad8a701972cdd8';
@@ -27,18 +28,39 @@ MovieDBApp.getMovie = function(person, pageNumber) {
 		dataType: 'json',
 		data: {
 			api_key: MovieDBApp.apiKey,
-			with_cast: person,
+			with_people: person,
 			page: pageNumber
 		}	
 	})
 };
 
+MovieDBApp.getUpcomings = function() {
+	return $.ajax({
+		url: MovieDBApp.apiUrl + 'movie/upcoming',
+		method: 'GET',
+		dataType: 'json',
+		data: {
+			api_key: MovieDBApp.apiKey
+		}	
+	})
+}
+
 MovieDBApp.getMovieByCast = function(person) {
 
 	$.when(MovieDBApp.getMovie(person, pageNmbr)).then(function(getMovieResult) {
 			getMovieResult.results.forEach(function(eachMovie) {
-				if (eachMovie.release_date === "" || eachMovie.release_date > "2016-08-09") {
+				if (eachMovie.release_date > "2016-08-09") {
 					MovieDBApp.ArrayOfMovieByCast.push(eachMovie);
+					MovieDBApp.ArrayOfMovieIds.push(eachMovie.id);
+				} else if (eachMovie.release_date === "") {
+					$.when(MovieDBApp.getUpcomings()).then(function(upcomingResults) {
+						upcomingResults.results.forEach(function(upcomingMovie) {
+							if (upcomingMovie.id === eachMovie.id) {
+								MovieDBApp.ArrayOfMovieByCast.push(eachMovie);
+								MovieDBApp.ArrayOfMovieIds.push(eachMovie.id);
+							}
+						});
+					});
 				}
 				
 			});
@@ -50,7 +72,30 @@ MovieDBApp.getMovieByCast = function(person) {
 
 			} else {
 				//MovieDBApp.displayMovie(myMovie.ArrayOfMovieByCast);
-				console.log(MovieDBApp.ArrayOfMovieByCast)
+				//console.log(MovieDBApp.ArrayOfMovieByCast);
+				//console.log(MovieDBApp.ArrayOfMovieIds);
+
+				MovieDBApp.ArrayOfMovieIds.forEach(function(eachId ,Index) {
+					$.when(MovieDBApp.getCreditsForMovie(eachId)).then(function(getCreditsForMovieResult) {
+						//console.log(getCreditsForMovieResult);
+						getCreditsForMovieResult.crew.forEach(function(crew) {
+
+							if (crew.id === person && crew.job !== "Director") {
+								MovieDBApp.ArrayOfMovieIds.splice(Index, 1);
+
+								MovieDBApp.ArrayOfMovieByCast.forEach(function(eachMovieToDelete, IndexToDelete) {
+									if (eachMovieToDelete.id === eachId) {
+										MovieDBApp.ArrayOfMovieByCast.splice(IndexToDelete, 1);
+									}
+								});
+								console.log(MovieDBApp.ArrayOfMovieByCast);
+
+							}
+						});
+
+					});
+					//console.log(MovieDBApp.ArrayOfMovieIds);
+				});
 			}
 
 		});
@@ -69,7 +114,7 @@ MovieDBApp.getCreditsForMovie = function(MovieId) {
 
 MovieDBApp.init = function() {
 
-	$.when(MovieDBApp.getPersonId("law")).then(function(getPersonIdResult) {
+	$.when(MovieDBApp.getPersonId("abrams")).then(function(getPersonIdResult) {
 
 		var id = getPersonIdResult.results[0].id;
 		MovieDBApp.getMovieByCast(id);
