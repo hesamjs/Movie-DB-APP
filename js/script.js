@@ -109,22 +109,19 @@ MovieDBApp.getMovieByCast = function(person) {
 
 MovieDBApp.init = function() {
 
-	$.when(MovieDBApp.getPersonId("dicaprio")).then(function(getPersonIdResult) {
-
-		var id = getPersonIdResult.results[0].id;
-		MovieDBApp.getMovieByCast(id);
-	})
-
 	$('#searchForm').on('submit', function(e){
 		e.preventDefault();
-		$('input[name=search]').val();
-		var starName = $('input[name=search]').val()
-	})
+
+		$.when(MovieDBApp.getPersonId($('input[name=search]').val())).then(function(getPersonIdResult) {
+
+			var id = getPersonIdResult.results[0].id;
+			MovieDBApp.getMovieByCast(id);
+		})
+	 })
 
 };
 
 
 $(function() {
 	MovieDBApp.init();
-
 });
