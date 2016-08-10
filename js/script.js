@@ -123,8 +123,7 @@ MovieDBApp.init = function() {
 
 };
 
-
-
 $(function() {
 	MovieDBApp.init();
+
 });
