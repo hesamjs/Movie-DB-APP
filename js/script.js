@@ -115,6 +115,12 @@ MovieDBApp.init = function() {
 		MovieDBApp.getMovieByCast(id);
 	})
 
+	$('#searchForm').on('submit', function(e){
+		e.preventDefault();
+		$('input[name=search]').val();
+		var starName = $('input[name=search]').val()
+	})
+
 };
 
 
