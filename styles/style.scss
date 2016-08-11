@@ -113,7 +113,7 @@ form button {
 	position: relative;
 	// left:45%;
 	transform: translate(50% 50%);
-	width: 10%;
+	width: 150px;
 	padding: 12px 20px;
 	border-radius: 20px;
 	border:none;
@@ -122,7 +122,8 @@ form button {
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	background-color: #239EC6;
-	transition: ease-in .1s;	
+	transition: ease-in .1s;
+	outline: none;	
 }
 
 form button:hover {
@@ -131,4 +132,68 @@ form button:hover {
 	transform: scale(1.1);
 	border-radius: 10px;
 
+}
+
+.wrapperDisplay {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.displayView {
+	margin-top: 5%;
+}
+
+.displayImage {
+	display: flex;
+	flex-direction:row;
+	align-items: center;
+	justify-content: space-around;
+	margin-right: 3%;
+}
+
+.displayImage img {
+	width: 75%;
+	border: 5px solid #f6c417;
+}
+
+.displayInfo h2 {
+	font-size: 50px;
+	margin-top: -4%;
+	color: #f6c417;
+	letter-spacing: 1.5px;
+}
+
+.displayInfo h3 {
+	color: #239EC6;
+	letter-spacing: 1.5px;
+	font-size: 45px;
+}
+
+.displayInfo h4 {
+	color: #f6c417;
+	letter-spacing: 1.5px;
+	font-size: 30px;
+}
+
+.displayInfo p {
+	color:#239EC6;
+	letter-spacing: 1.5px;
+	font-size: 30px;
+	margin-top: -6%;
+	font-family: 'Roboto', sans-serif;
+}
+
+ul {
+	margin-top: -6%;
+	-webkit-padding-start: 0;
+}
+
+ul li {
+	list-style: none;
+	color:#d7d5c7; 
+	line-height: 40px;
+	font-size: 30px;
+	font-weight: lighter;
+	font-family: 'Roboto', sans-serif;
 }
