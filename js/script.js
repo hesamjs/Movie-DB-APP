@@ -34,8 +34,13 @@ MovieDBApp.displayMovie = function(movie) {
 		MovieDBApp.ArrayOfCastForEachMovie.forEach(function(EachMovieCastAndCrew) {
 			if (movie.id === EachMovieCastAndCrew.id) {
 				movie.cast = [];
+				movie.castPic = [];
 				EachMovieCastAndCrew.cast.forEach(function(eachCast) {
-					movie.cast.push(eachCast.name)
+					var eachCastNameAndPic = {
+						name: eachCast.name,
+						pic: eachCast.profile_path
+					}
+					movie.cast.push(eachCastNameAndPic);
 
 					if (eachCast.id === MovieDBApp.personId) {
 						movie.personPhoto = eachCast.profile_path;
