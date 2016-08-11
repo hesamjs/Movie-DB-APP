@@ -183,6 +183,25 @@ MovieDBApp.init = function() {
 		})
 	 })
 
+	$('#movieList').on('click', 'li', function() {
+		var clickedPerson = $(this).text();
+		console.log(clickedPerson);
+
+		$.when(MovieDBApp.getPersonId(clickedPerson)).then(function(getPersonIdResult) {
+
+					MovieDBApp.ArrayOfMovieByCast = [];
+					MovieDBApp.ArrayOfMovieIds = [];
+					MovieDBApp.ArrayOfCastForEachMovie = [];
+
+					$('#movieList').empty();
+					pageNmbr = 1;
+
+					var id = getPersonIdResult.results[0].id;
+					MovieDBApp.personId = id;
+					MovieDBApp.getMovieByCast(id);
+				})
+	});
+
 };
 
 
