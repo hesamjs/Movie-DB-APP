@@ -46,25 +46,6 @@ header {
 
 }
 
-.header-two {
-	display: none;
-
-		
-}
-
-
-h5 {
-
-	margin-top: 0;
-	color: #f6c417;
-	font-size: 60px;
-	padding: 0;
-	margin-bottom: 0;
-	padding-right: 50px;
-	cursor: pointer;
-	
-}
-
 img {
 	width: 800px;
 }
@@ -215,21 +196,13 @@ form button:hover {
 	font-family: 'Roboto', sans-serif;
 }
 
-.header-custom {
-
-	display: flex; 
-	justify-content: center; 
-	align-items: center;
-	flex-wrap: wrap;
-
-}
-
 ul {
 	margin-top: -6%;
 	-webkit-padding-start: 0;
 }
 
 ul li {
+    display: inline-block;
     list-style: none;
     color:#d7d5c7; 
     line-height: 40px;
@@ -241,21 +214,18 @@ ul li {
     padding: 5px 20px;
     border-radius: 10px;
 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
 }
 
 ul li .crop {
 	width: 40px;
-	height: 60px;
+	height: 40px;
 	overflow: hidden;
-	border-radius: 5px;
+	border-radius: 50%;
 
 } 
 
 ul li img {
-	width: 100%;
+	width: 40px;
+	height: 60px;
 }
 
