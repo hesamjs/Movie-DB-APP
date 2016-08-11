@@ -46,6 +46,25 @@ header {
 
 }
 
+.header-two {
+	display: none;
+
+		
+}
+
+
+h5 {
+
+	margin-top: 0;
+	color: #f6c417;
+	font-size: 60px;
+	padding: 0;
+	margin-bottom: 0;
+	padding-right: 50px;
+	cursor: pointer;
+	
+}
+
 img {
 	width: 800px;
 }
@@ -211,6 +230,15 @@ form button:hover {
 	font-family: 'Roboto', sans-serif;
 }
 
+.header-custom {
+
+	display: flex; 
+	justify-content: center; 
+	align-items: center;
+	flex-wrap: wrap;
+
+}
+
 ul {
 	-webkit-padding-start: 0;
 	display: flex;
@@ -221,7 +249,6 @@ ul {
 }
 
 ul li {
-    display: inline-block;
     list-style: none;
     color:#d7d5c7; 
     line-height: 40px;
@@ -247,7 +274,7 @@ ul li {
 
 ul li .crop {
 	width: 40px;
-	height: 40px;
+	height: 60px;
 	overflow: hidden;
 	border-radius: 5px;
 	display: inline-block;
@@ -264,7 +291,6 @@ ul li:hover {
 
 
 ul li img {
-	width: 40px;
-	height: 60px;
+	width: 100%;
 }
 
