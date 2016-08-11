@@ -63,6 +63,7 @@ MovieDBApp.displayMovie = function(movie) {
 	// });
 
 
+
 }
 
 var pageNmbr = 1;
