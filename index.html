@@ -7,6 +7,30 @@
 	<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="styles/animate.css">
 	<link type="image/png" href="images/3d-glasses.png" rel="icon">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.js"></script>
+	<script id="myTemplate" type="x-handlebars-template">
+        <section class="displayView">
+            <div class="wrapperDisplay">
+                <div class="displayImage">
+                	{{#if poster_path}}
+                    <img src="http://image.tmdb.org/t/p/w150/{{poster_path}}">
+                    {{else}}
+		        	<img src="http://image.tmdb.org/t/p/w150/{{personPhoto}}" alt="Person Image"/>
+	    		    {{/if}}
+                </div>
+                <div class="displayInfo">
+                    <h2>{{title}}</h2>
+                    <br>
+                    <h3>Cast</h3>
+                    <ul>{{#each cast}}<li>{{this}}</li>{{/each}}</ul>
+                    <h4>Release Date</h4>
+                    <p>{{release_date}}</p>
+                </div>
+            </div>
+        </section>
+    </script>
 </head>
 <body>
 	<!-- HOME VIEW -->
@@ -29,33 +53,12 @@
 		</form>
 	</main>
 
-	<!-- Display View -->
-	
-	<section class="displayView">
-		<div class="wrapperDisplay">
-			<div class="displayImage">
-				<img src="http://www.impawards.com/1995/posters/basketball_diaries.jpg">
-			</div>
-			<div class="displayInfo">
-				<h2>Basketball Diaries</h2>
-				<br>
-				<h3>Cast</h3>
-				<ul>
-					<li>Kiefer Sutherland</li>
-					<li>Leslie Hope</li>
-					<li>Sarah Clarke</li>
-					<li>Xander Berkeley</li>
-					<li>Mary Lynn Rajskub</li>
-					<li>Carlo Rota</li>
-				</ul>
-				<h4>Release Date</h4>
-				<p>June 28, 2017</p>
-			</div>
-		</div>
+    <section id="movieList">
+
+
+
 	</section>
 
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 	
 </body>
