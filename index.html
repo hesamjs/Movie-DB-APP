@@ -13,19 +13,19 @@
 	<script id="myTemplate" type="x-handlebars-template">
         <section class="displayView">
             <div class="wrapperDisplay">
-                <div class="displayImage">
+                <div class="displayImage animated slideInLeft">
                 	{{#if poster_path}}
                     <img src="http://image.tmdb.org/t/p/w500/{{poster_path}}">
                     {{else}}
 		        	<img src="http://image.tmdb.org/t/p/w500/{{personPhoto}}" alt="Person Image"/>
 	    		    {{/if}}
                 </div>
-                <div class="displayInfo">
+                <div class="displayInfo animated zoomIn">
                     <h2>{{title}}</h2>
                     <h3>Overview</h3>
                     <p>{{overview}}</p>
                     <h3>Cast</h3>
-                    <ul>{{#each cast}}<li><div class="crop"><img src="http://image.tmdb.org/t/p/w150/{{this.pic}}"></div>{{this.name}}</li>{{/each}}</ul>
+                    <ul class="animated slideInRight">{{#each cast}}<li><div class="crop"><img src="http://image.tmdb.org/t/p/w150/{{this.pic}}"></div>{{this.name}}</li>{{/each}}</ul>
                     <h4>Release Date</h4>
                     <p>{{release_date}}</p>
                 </div>
