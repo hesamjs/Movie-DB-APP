@@ -46,6 +46,25 @@ header {
 
 }
 
+.header-two {
+	display: none;
+
+		
+}
+
+
+h5 {
+
+	margin-top: 0;
+	color: #f6c417;
+	font-size: 60px;
+	padding: 0;
+	margin-bottom: 0;
+	padding-right: 50px;
+	cursor: pointer;
+	
+}
+
 img {
 	width: 800px;
 }
@@ -194,6 +213,15 @@ form button:hover {
 	font-size: 30px;
 	margin-top: -6%;
 	font-family: 'Roboto', sans-serif;
+}
+
+.header-custom {
+
+	display: flex; 
+	justify-content: center; 
+	align-items: center;
+	flex-wrap: wrap;
+
 }
 
 ul {

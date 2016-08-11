@@ -57,6 +57,7 @@ MovieDBApp.displayMovie = function(movie) {
 
 			$('#movieList').append(movieTemplate);
 		
+
 }
 
 var pageNmbr = 1;
@@ -156,8 +157,16 @@ MovieDBApp.getMovieByCast = function(person) {
 
 MovieDBApp.init = function() {
 
+	$('h5').on('click', function(){
+		location.reload();
+	})
+
 	$('#searchForm').on('submit', function(e){
 		e.preventDefault();
+		$('.header-text').hide();
+		$('.header-image').hide();
+		$('.header-two').show();
+		$('#searchForm').addClass('header-custom');
 
 		$.when(MovieDBApp.getPersonId($('input[name=search]').val())).then(function(getPersonIdResult) {
 
