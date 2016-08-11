@@ -159,6 +159,7 @@ form button:hover {
 	align-items: flex-start;
 	margin: 0 auto;
 	width: 90%;
+	border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
 .displayView {
@@ -167,7 +168,10 @@ form button:hover {
 	align-items: center;
 	justify-content: center;
 	align-content: center;
+
 }
+
+
 
 .displayImage {
 	display: flex;
@@ -198,20 +202,31 @@ form button:hover {
 	color: #239EC6;
 	letter-spacing: 1.5px;
 	font-size: 45px;
-	margin-top: -7%;
+	margin-top: 50px;
+	margin-bottom: 0;
 }
 
 .displayInfo h4 {
 	color: #f6c417;
 	letter-spacing: 1.5px;
 	font-size: 30px;
+	margin-bottom: 0;
+}
+
+.displayInfo h4 + p {
+	margin-top: 0;
+}
+
+.displayInfo h3 + p {
+	color: #d7d5c7;
+	// margin:5% 0; 
+	font-size: 25px;
 }
 
 .displayInfo p {
 	color:#239EC6;
 	letter-spacing: 1.5px;
 	font-size: 30px;
-	margin-top: -6%;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -225,8 +240,12 @@ form button:hover {
 }
 
 ul {
-	margin-top: -6%;
 	-webkit-padding-start: 0;
+	display: flex;
+	flex-wrap:wrap;
+	align-items:center;
+
+
 }
 
 ul li {
@@ -239,21 +258,37 @@ ul li {
     border: 2px solid #FE4A49 ;
     margin: 5px;
     padding: 5px 20px;
+    // width:40%;
     border-radius: 10px;
-
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
+    align-items:center;
+    // display: inline-block;
+ 
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    transition: ease-in .1s;
+    cursor: pointer;
 }
+
 
 ul li .crop {
 	width: 40px;
 	height: 60px;
 	overflow: hidden;
 	border-radius: 5px;
+	display: inline-block;
+	margin-right: 15px;
 
 } 
+
+ul li:hover {
+	color: #FE4A49;
+	border-color: #d7d5c7;
+	transform: scale(1.05);
+	background-color: #d7d5c7;
+}
+
 
 ul li img {
 	width: 100%;
