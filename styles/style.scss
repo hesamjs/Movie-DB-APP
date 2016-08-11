@@ -28,6 +28,10 @@ header {
 	margin-left: 22%;
 }
 
+img {
+	max-width: 100%;
+}
+
 .header-text {
 	display: flex;
 	flex-direction: column;
@@ -135,9 +139,10 @@ form button:hover {
 }
 
 .wrapperDisplay {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
+	// display: flex;
+	// justify-content: space-around;
+	// align-items: flex-start;
+	width: 1170px;
 }
 
 .displayView {
@@ -149,12 +154,22 @@ form button:hover {
 	flex-direction:row;
 	align-items: center;
 	justify-content: space-around;
-	margin-right: 3%;
+	// margin-right: 3%;
+	width: 600px;
 }
 
 .displayImage img {
-	width: 75%;
+	width: 500px;
 	border: 5px solid #f6c417;
+}
+
+.displayInfo {
+	// display: flex;
+	// flex-display: column;
+	// align-items:center;
+	width: 600px;
+
+
 }
 
 .displayInfo h2 {
@@ -190,10 +205,15 @@ ul {
 }
 
 ul li {
+	display: inline-block;
 	list-style: none;
 	color:#d7d5c7; 
 	line-height: 40px;
 	font-size: 30px;
 	font-weight: lighter;
 	font-family: 'Roboto', sans-serif;
+	border: 2px solid #FE4A49 ;
+	margin: 5px;
+	padding: 5px 20px;
+	border-radius: 10px;
 }
