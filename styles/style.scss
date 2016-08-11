@@ -219,7 +219,6 @@ ul {
 }
 
 ul li {
-    display: inline-block;
     list-style: none;
     color:#d7d5c7; 
     line-height: 40px;
@@ -239,4 +238,18 @@ ul li:hover {
 	background-color:#d7d5c7;
 	border-color: #d7d5c7;  
 	transform: scale(1.05);
+
 }
+
+ul li .crop {
+	width: 40px;
+	height: 60px;
+	overflow: hidden;
+	border-radius: 5px;
+
+} 
+
+ul li img {
+	width: 100%;
+}
+
