@@ -24,45 +24,39 @@ MovieDBApp.getPersonId = function(person) {
 
 MovieDBApp.displayMovie = function(movie) {
 
-	var myTemplate = $("#myTemplate").html();
+		var myTemplate = $("#myTemplate").html();
 
-	var template = Handlebars.compile(myTemplate);
+		var template = Handlebars.compile(myTemplate);
 
-	//movieArray.forEach(function(movie) {
-	console.log(movie);
+			MovieDBApp.ArrayOfCastForEachMovie.forEach(function(EachMovieCastAndCrew) {
+				if (movie.id === EachMovieCastAndCrew.id) {
+					movie.cast = [];
+					movie.castPic = [];
+					EachMovieCastAndCrew.cast.forEach(function(eachCast) {
+						var eachCastNameAndPic = {
+							name: eachCast.name,
+							pic: eachCast.profile_path
+						}
+						movie.cast.push(eachCastNameAndPic);
 
-		MovieDBApp.ArrayOfCastForEachMovie.forEach(function(EachMovieCastAndCrew) {
-			if (movie.id === EachMovieCastAndCrew.id) {
-				movie.cast = [];
-				movie.castPic = [];
-				EachMovieCastAndCrew.cast.forEach(function(eachCast) {
-					var eachCastNameAndPic = {
-						name: eachCast.name,
-						pic: eachCast.profile_path
-					}
-					movie.cast.push(eachCastNameAndPic);
+						if (eachCast.id === MovieDBApp.personId) {
+							movie.personPhoto = eachCast.profile_path;
+						}
+					});
 
-					if (eachCast.id === MovieDBApp.personId) {
-						movie.personPhoto = eachCast.profile_path;
-					}
-				});
+					EachMovieCastAndCrew.crew.forEach(function(eachCrew) {
 
-				EachMovieCastAndCrew.crew.forEach(function(eachCrew) {
+						if (eachCrew.id === MovieDBApp.personId) {
+							movie.personPhoto = eachCrew.profile_path;
+						}
+					});
 
-					if (eachCrew.id === MovieDBApp.personId) {
-						movie.personPhoto = eachCrew.profile_path;
-					}
-				});
+				}
+			});
+			var movieTemplate = template(movie);
 
-				console.log(EachMovieCastAndCrew.cast);
-			}
-		});
-		var movieTemplate = template(movie);
-
-		$('#movieList').append(movieTemplate);
-	// });
-
-
+			$('#movieList').append(movieTemplate);
+		
 }
 
 var pageNmbr = 1;
@@ -104,17 +98,15 @@ MovieDBApp.getMovieByCast = function(person) {
 			});
 
 			if (getMovieResult.results.length === 20) {
+			
 					pageNmbr += 1;
 				
 					MovieDBApp.getMovieByCast(person);
 
 			} else {
-				//console.log(MovieDBApp.ArrayOfMovieByCast);
-				//console.log(MovieDBApp.ArrayOfMovieIds);
 
 				MovieDBApp.ArrayOfMovieIds.forEach(function(eachId ,Index) {
 					$.when(MovieDBApp.getCreditsForMovie(eachId)).then(function(getCreditsForMovieResult) {
-						console.log(getCreditsForMovieResult);
 						MovieDBApp.ArrayOfCastForEachMovie.push(getCreditsForMovieResult);
 						getCreditsForMovieResult.crew.forEach(function(crew) {
 
@@ -139,20 +131,14 @@ MovieDBApp.getMovieByCast = function(person) {
 										if (eachMovieToDelete.id === eachId) {
 											MovieDBApp.ArrayOfMovieByCast.splice(IndexToDelete, 1);
 											MovieDBApp.ArrayOfCastForEachMovie.splice(IndexToDelete, 1);
-											console.log("spliced");
 										}
 									});
 								}
 							}
 						});
 
-
-					// console.log(MovieDBApp.ArrayOfMovieIds);
-					// console.log(MovieDBApp.ArrayOfMovieByCast);
-
 					MovieDBApp.ArrayOfMovieByCast.forEach(function(movieToDisplay) {
 						if (movieToDisplay.id === eachId) {
-							console.log(movieToDisplay);
 							MovieDBApp.displayMovie(movieToDisplay);
 						}
 					});
@@ -190,7 +176,6 @@ MovieDBApp.init = function() {
 
 	$('#movieList').on('click', 'li', function() {
 		var clickedPerson = $(this).text();
-		console.log(clickedPerson);
 
 		$.when(MovieDBApp.getPersonId(clickedPerson)).then(function(getPersonIdResult) {
 
