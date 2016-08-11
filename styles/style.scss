@@ -202,7 +202,6 @@ ul {
 }
 
 ul li {
-    display: inline-block;
     list-style: none;
     color:#d7d5c7; 
     line-height: 40px;
@@ -213,4 +212,22 @@ ul li {
     margin: 5px;
     padding: 5px 20px;
     border-radius: 10px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
 }
+
+ul li .crop {
+	width: 40px;
+	height: 60px;
+	overflow: hidden;
+	border-radius: 5px;
+
+} 
+
+ul li img {
+	width: 100%;
+}
+

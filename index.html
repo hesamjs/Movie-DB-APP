@@ -24,7 +24,7 @@
                     <h2>{{title}}</h2>
                     <br>
                     <h3>Cast</h3>
-                    <ul>{{#each cast}}<li>{{this}}</li>{{/each}}</ul>
+                    <ul>{{#each cast}}<li><div class="crop"><img src="http://image.tmdb.org/t/p/w150/{{this.pic}}"></div>{{this.name}}</li>{{/each}}</ul>
                     <h4>Release Date</h4>
                     <p>{{release_date}}</p>
                 </div>
