@@ -139,23 +139,32 @@ form button:hover {
 }
 
 .wrapperDisplay {
-	// display: flex;
-	// justify-content: space-around;
-	// align-items: flex-start;
-	width: 1170px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 0 auto;
+	width: 90%;
 }
 
 .displayView {
-	margin-top: 5%;
+	margin: 5% auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
 }
 
 .displayImage {
 	display: flex;
 	flex-direction:row;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: space-around;
-	// margin-right: 3%;
-	width: 600px;
+	margin-right: 3%;
+	width: 40%;
+}
+
+.displayInfo {
+	width: 60%;
 }
 
 .displayImage img {
@@ -174,7 +183,7 @@ form button:hover {
 
 .displayInfo h2 {
 	font-size: 50px;
-	margin-top: -4%;
+	margin-top: -2%;
 	color: #f6c417;
 	letter-spacing: 1.5px;
 }
@@ -183,12 +192,17 @@ form button:hover {
 	color: #239EC6;
 	letter-spacing: 1.5px;
 	font-size: 45px;
+	margin-top: -1%;
 }
 
 .displayInfo h4 {
 	color: #f6c417;
 	letter-spacing: 1.5px;
 	font-size: 30px;
+}
+
+.displayInfo h3 + p {
+	color: #d7d5c7;
 }
 
 .displayInfo p {
@@ -205,15 +219,24 @@ ul {
 }
 
 ul li {
-	display: inline-block;
-	list-style: none;
-	color:#d7d5c7; 
-	line-height: 40px;
-	font-size: 30px;
-	font-weight: lighter;
-	font-family: 'Roboto', sans-serif;
-	border: 2px solid #FE4A49 ;
-	margin: 5px;
-	padding: 5px 20px;
-	border-radius: 10px;
+    display: inline-block;
+    list-style: none;
+    color:#d7d5c7; 
+    line-height: 40px;
+    font-size: 30px;
+    font-weight: lighter;
+    font-family: 'Roboto', sans-serif;
+    border: 2px solid #FE4A49 ;
+    margin: 5px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: ease-in .1s;
+}
+
+ul li:hover {
+	color: #FE4A49;
+	background-color:#d7d5c7;
+	border-color: #d7d5c7;  
+	transform: scale(1.05);
 }
