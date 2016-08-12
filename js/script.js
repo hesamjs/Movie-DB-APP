@@ -10,6 +10,8 @@ MovieDBApp.personId = 0;
 MovieDBApp.apiUrl = 'https://api.themoviedb.org/3/'
 MovieDBApp.apiKey = '0dc77fa2f3cda50f25ad8a701972cdd8';
 
+//a function that returns person ID by getting the name with type of string
+
 MovieDBApp.getPersonId = function(person) {
 	return $.ajax({
 		url: MovieDBApp.apiUrl + 'search/person',
@@ -22,11 +24,15 @@ MovieDBApp.getPersonId = function(person) {
 	})
 }
 
+//a function that gets the movie object and displays the movie on page using handlebars
+
 MovieDBApp.displayMovie = function(movie) {
 
 		var myTemplate = $("#myTemplate").html();
 
 		var template = Handlebars.compile(myTemplate);
+
+			//looping through array of cast and pushing the cast of each movie in their movie object and displaying them using handlebars
 
 			MovieDBApp.ArrayOfCastForEachMovie.forEach(function(EachMovieCastAndCrew) {
 				if (movie.id === EachMovieCastAndCrew.id) {
@@ -60,6 +66,8 @@ MovieDBApp.displayMovie = function(movie) {
 
 }
 
+//a function that returns movie ID by getting the id of person and page number for results
+
 var pageNmbr = 1;
 
 MovieDBApp.getMovie = function(person, pageNumber) {
@@ -76,6 +84,8 @@ MovieDBApp.getMovie = function(person, pageNumber) {
 	})
 };
 
+//a function that returns the cast and crew result by getting the id of each movie
+
 MovieDBApp.getCreditsForMovie = function(MovieId) {
 	return $.ajax({
 		url: MovieDBApp.apiUrl + `movie/${MovieId}/credits`,
@@ -86,6 +96,9 @@ MovieDBApp.getCreditsForMovie = function(MovieId) {
 		}	
 	})
 };
+
+//a function that gets the person id and gets the movies for the person and checks if each movie is upcoming and if so
+//then puts the umcoming movies in an array 
 
 MovieDBApp.getMovieByCast = function(person) {
 
@@ -105,6 +118,8 @@ MovieDBApp.getMovieByCast = function(person) {
 					MovieDBApp.getMovieByCast(person);
 
 			} else {
+
+				//after getting all the movies for that person lets get the cast and crew for each movie 
 
 				MovieDBApp.ArrayOfMovieIds.forEach(function(eachId ,Index) {
 					$.when(MovieDBApp.getCreditsForMovie(eachId)).then(function(getCreditsForMovieResult) {
@@ -138,6 +153,8 @@ MovieDBApp.getMovieByCast = function(person) {
 							}
 						});
 
+					//then we need to display the remaining movies in page
+
 					MovieDBApp.ArrayOfMovieByCast.forEach(function(movieToDisplay) {
 						if (movieToDisplay.id === eachId) {
 							MovieDBApp.displayMovie(movieToDisplay);
@@ -156,11 +173,13 @@ MovieDBApp.getMovieByCast = function(person) {
 
 
 MovieDBApp.init = function() {
-
+	//go back to home page when user clicks on what's new movie
 	$('h5').on('click', function(){
 		location.reload();
 	})
 
+	//after submitting the form we need to change some styles in next page and get the input value and after resetting the data
+	//call display the movies for person
 	$('#searchForm').on('submit', function(e){
 		e.preventDefault();
 		$('.header-text').hide();
@@ -182,6 +201,8 @@ MovieDBApp.init = function() {
 			MovieDBApp.getMovieByCast(id);
 		})
 	 })
+
+	//if user clicks on each cast name display the movies for that person
 
 	$('#movieList').on('click', 'li', function() {
 		var clickedPerson = $(this).text();
