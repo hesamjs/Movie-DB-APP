@@ -3,12 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>What's New Movie</title>
-	<link rel="stylesheet" type="text/css" href="styles/style.scss">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="styles/animate.css">
 	<link type="image/png" href="images/3d-glasses.png" rel="icon">
-
+	<link rel="stylesheet" href="styles/jquery-ui.css">
+	<link rel="stylesheet" href="styles/jquery-ui.theme.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.js"></script>
 	<script id="myTemplate" type="x-handlebars-template">
         <section class="displayView">
@@ -25,9 +28,9 @@
                     <h3>Overview</h3>
                     <p>{{overview}}</p>
                     <h3>Cast</h3>
-                    <ul class="animated slideInRight">
+                    <ul class="animated slideInRight expandible">
                     	{{#each cast}}
-                    	<li>
+                    	<li {{#if extended}}class="extended"{{/if}}>
                     		<div class="crop">
 								{{#if this.pic}}
                     			<img src="http://image.tmdb.org/t/p/w150/{{this.pic}}">
@@ -37,7 +40,11 @@
                 			</div>{{this.name}}
             			</li>
             			{{/each}}
+            			{{#if castShowMore}}
+            			<li class="showMore">Show More</li>
+            			{{/if}}
         			</ul>
+
                     <h4>Release Date</h4>
                     <p>{{release_date}}</p>
                 </div>
@@ -63,17 +70,35 @@
 			<div class="header-two">
 				<h5>What's New <span class="blue">Movie</span></h5>
 			</div>
+			<div class="flexForm">
 				<label></label>
-				<input type="search" name="search" placeholder="Type in an Actor, or Director">
+				<input id="inputBox" autocomplete="off" type="search" name="search" placeholder="Actor or Director">
 				<button>Submit</button>
+			</div>
+
 		</form>
 	</main>
 
+	<section id="personHeader">
+		
+	</section>
+
     <section id="movieList">
 
-
+		
 
 	</section>
+
+	<footer>
+		<h6>Developed By:</h6>
+		<div class="developer">
+			<h6><a href="https://ca.linkedin.com/in/alessandro-nahon-5b355a121">Alessandro Nahon, </a></h6>
+			<h6><a href="https://ca.linkedin.com/in/sam-sahbari-6a677b40">Sam Sahbari, </a></h6>
+			<h6><a href="https://ca.linkedin.com/in/nick-spencer-5b8068120">Nick Spencer</a></h6>
+		</div>
+	</footer>
+
+
 
 	<script type="text/javascript" src="js/script.js"></script>
 	
