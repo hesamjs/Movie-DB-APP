@@ -10,6 +10,27 @@ MovieDBApp.personId = 0;
 MovieDBApp.apiUrl = 'https://api.themoviedb.org/3/'
 MovieDBApp.apiKey = '0dc77fa2f3cda50f25ad8a701972cdd8';
 
+MovieDBApp.getToday = function() {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+	    dd = '0' + dd
+	} 
+
+	if(mm<10) {
+	    mm = '0' + mm
+	} 
+
+	today = yyyy+'-'+mm+'-'+dd;
+	
+	return today;
+}
+
+
+
 //a function that returns person ID by getting the name with type of string
 
 MovieDBApp.getPersonId = function(person) {
@@ -112,7 +133,7 @@ MovieDBApp.getMovieByCast = function(person) {
 
 	$.when(MovieDBApp.getMovie(person, pageNmbr)).then(function(getMovieResult) {
 		getMovieResult.results.forEach(function(eachMovie) {
-			if (eachMovie.release_date > "2016-09-06") {
+			if (eachMovie.release_date > MovieDBApp.getToday()) {
 				MovieDBApp.arrayOfMovieByCast.push(eachMovie);
 				MovieDBApp.arrayOfMovieIds.push(eachMovie.id);
 			} 
